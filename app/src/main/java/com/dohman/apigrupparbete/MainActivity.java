@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
             return null;
         }
+
         // This method runs on UIThread and it will execute when doInBackground is completed
         @Override
         protected void onPostExecute(String s) {
@@ -75,10 +76,32 @@ public class MainActivity extends AppCompatActivity {
                 // Parent JSON Object. JSON Objects starts at { and ends at }
                 json = new JSONObject(s);
 
-                ArrayList<Movie> movie = new ArrayList<>();
+                ArrayList<Movie> movieList = new ArrayList<>();
 
                 // JSON Array of parent JSON Object. JSON Arrays starts at [ and ends at ]
-                JSONArray jsonArray = json.getJSONArray()
+                JSONArray jsonArray = json.getJSONArray("results");
+
+                // Reading JSON Object inside JSON Array
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    // Reading JSON Object at 'i' position of JSON Array
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    Movie movie = new Movie();
+                    movie.setTitle(object.getString("original_title"));
+                    movie.setReleaseYear(object.getString("original_title"));
+                    movie.setPlot(object.getString("original_title"));
+                    movie.setDirector(object.getString("original_title"));
+                    movie.setLanguage(object.getString("original_title"));
+                    movie.setImage(object.getString("original_title"));
+                    movie.setGenre(object.getString("original_title"));
+                    movie.setTitle(object.getString("original_title"));
+                    movie.setTitle(object.getString("original_title"));
+                    movie.setTitle(object.getString("original_title"));
+                    movie.setTitle(object.getString("original_title"));
+                    movie.setTitle(object.getString("original_title"));
+
+                    movieList.add(movie);
+
+                }
             }
         }
 
