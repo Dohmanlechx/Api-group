@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -87,23 +88,30 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject object = jsonArray.getJSONObject(i);
                     Movie movie = new Movie();
                     movie.setTitle(object.getString("original_title"));
-                    movie.setReleaseYear(object.getString("original_title"));
-                    movie.setPlot(object.getString("original_title"));
-                    movie.setDirector(object.getString("original_title"));
-                    movie.setLanguage(object.getString("original_title"));
-                    movie.setImage(object.getString("original_title"));
-                    movie.setGenre(object.getString("original_title"));
-                    movie.setTitle(object.getString("original_title"));
-                    movie.setTitle(object.getString("original_title"));
-                    movie.setTitle(object.getString("original_title"));
-                    movie.setTitle(object.getString("original_title"));
-                    movie.setTitle(object.getString("original_title"));
+                    movie.setReleaseYear(object.getString("release_date"));
+                    movie.setPlot(object.getString("overview"));
+                    movie.setLanguage(object.getString("original_language"));
+                    movie.setImage(object.getString("backdrop_path"));
+                    // TODO Dessa är en parent json, fixas senare om tid finnes
+                    //   movie.setGenre(object.getString("genres"));
+                    //   movie.setCountry(object.getString("origin_country"));
+                    //   movie.setProducer(object.getString("original_title"));
+                    movie.setRuntime(object.getString("runtime"));
+                    movie.setRating(object.getString("vote_average"));
 
                     movieList.add(movie);
 
+                    //Creating custom array adapter instance and setting context of MainActivity, List item layout file and movie list.
+                    // TODO Vi kan göra på annat sätt såklart, tex RecycleViewAdapter eller nåt. Nedanför är bara ett exempel.
+
+                    /*MovieArrayAdapter movieArrayAdapter = new MovieArrayAdapter(MainActivity.this,R.layout.movie_list,movieList);
+
+                    //Setting adapter to listview
+                    listView.setAdapter(movieArrayAdapter);*/
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
-
     }
 }
