@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginTop="?actionBarSize"
-            android:scaleType="centerCrop">
+            android:scaleType="centerCrop"
+            android:src="@drawable/blank_image">
         </ImageView>
 
         <TextView
@@ -65,6 +66,7 @@
             android:id="@+id/imageRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imageMain"
             android:layout_alignRight="@+id/imageMain"
             android:layout_alignBottom="@+id/imageMain"
             android:padding="8dp"/>
@@ -87,18 +89,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Genre:"/>
+                android:text="@string/genre"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingRight="32dp"
                 android:text="Drama"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Runtime:"/>
+                android:text="@string/runtime"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textPlotTitle"
                 android:padding="8dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ipsum nisi. Ut sodales suscipit vulputate. In magna nulla, viverra quis est vitae, facilisis suscipit ligula. Integer posuere non purus non ullamcorper. Morbi porta felis in mauris tempus, sit amet aliquet urna mattis. Phasellus nec malesuada lacus. Phasellus tincidunt sagittis mi. Pellentesque quis erat vitae turpis ornare porta eu non nisl. Integer sed porttitor odio. Nunc rhoncus libero non turpis pulvinar rhoncus."/>
+                android:text="Cat ipsum dolor sit amet, chase mice. Lick master's hand at first then bite because im moody hide when guests come over, but small kitty warm kitty little balls of fur and reward the chosen human with a slow blink and eat owner's food put toy mouse in food bowl run out of litter box at full speed . Stares at human while pushing stuff off a table fooled again thinking the dog likes me. Prance along on top of the garden fence, annoy the neighbor's dog and make it bark cat is love, cat is life."/>
 
         </RelativeLayout>
 
@@ -142,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Country of origin:"
+                android:text="@string/countryOfOrigin"
                 android:textSize="20dp"/>
 
             <TextView
@@ -151,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:layout_below="@+id/textCountryTitle"
-                android:text="Sweden"/>
+                android:text="Far far away"/>
 
         </RelativeLayout>
 
@@ -166,7 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="Spoken language:"
+                android:text="@string/spokenLanguage"
                 android:textSize="20dp"/>
 
             <TextView
@@ -175,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:layout_below="@+id/textLanguageTitle"
-                android:text="Swedish"/>
+                android:text="Gibberish"/>
 
         </RelativeLayout>
 
