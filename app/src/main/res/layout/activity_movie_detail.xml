@@ -1,9 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetailActivity">
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/topPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageMain"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="?actionBarSize"
+            android:scaleType="centerCrop">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageMain"
+            android:layout_alignStart="@+id/imageMain"
+            android:layout_alignLeft="@+id/imageMain"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:text="Movie Title"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6">
+        </TextView>
+
+        <TextView
+            android:id="@+id/textYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textTitle"
+            android:layout_alignStart="@+id/imageMain"
+            android:layout_alignLeft="@+id/imageMain"
+            android:clickable="false"
+            android:paddingBottom="4dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:text="2008"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:shadowColor="#000000"
+            android:shadowDx="1.5"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"/>
+
+        <ImageView
+            android:id="@+id/imageRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/imageMain"
+            android:layout_alignBottom="@+id/imageMain"
+            android:padding="8dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottomPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topPart">
+
+        <LinearLayout
+            android:id="@+id/genreRuntimeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Genre:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drama"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Runtime:"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="128 min"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/plotLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/genreRuntimeLayout">
+
+            <TextView
+                android:id="@+id/textPlotTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Plot:"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/textPlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textPlotTitle"
+                android:padding="8dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut ipsum nisi. Ut sodales suscipit vulputate. In magna nulla, viverra quis est vitae, facilisis suscipit ligula. Integer posuere non purus non ullamcorper. Morbi porta felis in mauris tempus, sit amet aliquet urna mattis. Phasellus nec malesuada lacus. Phasellus tincidunt sagittis mi. Pellentesque quis erat vitae turpis ornare porta eu non nisl. Integer sed porttitor odio. Nunc rhoncus libero non turpis pulvinar rhoncus."/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/countryLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plotLayout">
+
+            <TextView
+                android:id="@+id/textCountryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Country of origin:"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/textCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_below="@+id/textCountryTitle"
+                android:text="Sweden"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/languageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countryLayout">
+
+            <TextView
+                android:id="@+id/textLanguageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Spoken language:"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/textLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:layout_below="@+id/textLanguageTitle"
+                android:text="Swedish"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary">
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/menu_toolbar" />
+    </Toolbar>
+
+
+</RelativeLayout>
