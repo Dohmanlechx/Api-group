@@ -10,4 +10,18 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
     }
+
+    private MovieDetails getMovie() {
+
+      MovieDetails movieDetails = new MovieDetails();
+
+
+
+      return movieDetails;
+    }
+
+    private void setMovie() {
+
+    }
+
 }
