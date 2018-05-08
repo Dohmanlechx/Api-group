@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
 
     }
-    
+
     //AsyncTask to process network request
     class CheckConnectionStatus extends AsyncTask<String, Void, String> {
         //This method will run on UIThread and it will execute before doInBackground
