@@ -25,7 +25,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         image = (ImageView) findViewById(R.id.imageMain);
 
-        title = (TextView) findViewById(R.id.title);
+        title = (TextView) findViewById(R.id.textTitle);
 
         date = (TextView)findViewById(R.id.textYear);
 
