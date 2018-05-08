@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private ListView listView;
     private SearchView searchView;
+    ArrayList<MovieDetails> movieList;
+    MovieArrayAdapter movieArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivity(intent);
 
     }
-
-
+    
     //AsyncTask to process network request
     class CheckConnectionStatus extends AsyncTask<String, Void, String> {
         //This method will run on UIThread and it will execute before doInBackground
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //Parent JSON Object. Json object start at { and end at }
                 jsonObject = new JSONObject(s);
 
-                ArrayList<MovieDetails> movieList = new ArrayList<>();
+                movieList = new ArrayList<>();
 
 //JSON Array of parent JSON object. Json array starts from [ and end at ]
                 JSONArray jsonArray = jsonObject.getJSONArray("results");
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
 
                 //Creating custom array adapter instance and setting context of MainActivity, List item layout file and movie list.
-                MovieArrayAdapter movieArrayAdapter = new MovieArrayAdapter(MainActivity.this,R.layout.movie_list,movieList);
+                movieArrayAdapter = new MovieArrayAdapter(MainActivity.this,R.layout.movie_list,movieList);
 
                 //Setting adapter to listview
                 listView.setAdapter(movieArrayAdapter);
@@ -156,15 +157,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
+            public boolean onQueryTextChange(String newText) {
+                newText=newText.toLowerCase();
+                List<MovieDetails> filteredMoviesList=new ArrayList<>();
+
+                for (MovieDetails model:movieList){
+                     String text=model.getTitle().toLowerCase();
+                     if(text.contains(newText)){
+                         filteredMoviesList.add(model);
+                     }
+                 }
+                 movieArrayAdapter.setfilter(filteredMoviesList);
+
+
+                return true;
             }
         });
 
         return true;
     }
 
-    private List<MovieDetails> filter(List<MovieDetails> pl, String query){
+    /*private List<MovieDetails> filter(List<MovieDetails> pl, String query){
         query=query.toLowerCase();
         final List<MovieDetails> filteredMoviesList=new ArrayList<>();
         for (MovieDetails model:pl){
@@ -174,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
         return filteredMoviesList;
-    }
+    }*/
 
     //for changeing the text color of searchview
     private void changeSearchViewTextColor(View view){
