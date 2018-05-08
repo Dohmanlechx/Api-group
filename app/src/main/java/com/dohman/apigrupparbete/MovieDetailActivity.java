@@ -22,6 +22,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
         Intent intent=getIntent();
 
+
         image = (ImageView) findViewById(R.id.imageMain);
 
         title = (TextView) findViewById(R.id.title);

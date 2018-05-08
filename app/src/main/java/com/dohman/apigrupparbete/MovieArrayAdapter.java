@@ -55,11 +55,11 @@ public class MovieArrayAdapter extends ArrayAdapter {
         return movieDetailsList.get(position);
     }
 
-    public void setfilter(List<MovieDetails> listitem)
+    /*public void setfilter(List<MovieDetails> listitem)
     {
         movieDetailsList=new ArrayList<>();
         movieDetailsList.addAll(listitem);
         notifyDataSetChanged();
-    }
+    }*/
 
 }

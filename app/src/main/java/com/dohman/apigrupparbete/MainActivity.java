@@ -159,7 +159,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onQueryTextChange(String newText) {
                 newText=newText.toLowerCase();
-                List<MovieDetails> filteredMoviesList=new ArrayList<>();
+                new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query="+newText);
+
+                /*List<MovieDetails> filteredMoviesList=new ArrayList<>();
 
                 for (MovieDetails model:movieList){
                      String text=model.getTitle().toLowerCase();
@@ -167,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                          filteredMoviesList.add(model);
                      }
                  }
-                 movieArrayAdapter.setfilter(filteredMoviesList);
+                 movieArrayAdapter.setfilter(filteredMoviesList);*/
 
 
                 return true;
