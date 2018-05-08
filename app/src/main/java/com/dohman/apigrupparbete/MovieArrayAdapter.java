@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieArrayAdapter extends ArrayAdapter {
@@ -53,4 +54,5 @@ public class MovieArrayAdapter extends ArrayAdapter {
     public Object getItem(int position) {
         return movieDetailsList.get(position);
     }
+
 }
