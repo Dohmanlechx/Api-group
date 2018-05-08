@@ -18,15 +18,15 @@ public class MovieDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
 
-        image = (ImageView) findViewById(R.id.poster);
+        image = (ImageView) findViewById(R.id.imageMain);
 
         title = (TextView) findViewById(R.id.title);
 
-        date = (TextView)findViewById(R.id.date);
+        date = (TextView)findViewById(R.id.textYear);
 
-        rating = (TextView)findViewById(R.id.rating);
+        rating = (TextView)findViewById(R.id.textRating);
 
-        overview = (TextView) findViewById(R.id.overview);
+        overview = (TextView) findViewById(R.id.textPlot);
 
         //Getting the value from bundle, means the value which we had during switching to this activity from main activity
         MovieDetails details = (MovieDetails) getIntent().getExtras().getSerializable("MOVIE_DETAILS");
