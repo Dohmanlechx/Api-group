@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
 //Executing AsyncTask, passing api as parameter
-        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=avatar");
+        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=a");
 
     }
 
@@ -140,6 +140,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         final MenuItem myActionMenuItem=menu.findItem(R.id.action_search);
+
+
 
         searchView=(SearchView) myActionMenuItem.getActionView();
         changeSearchViewTextColor(searchView);
