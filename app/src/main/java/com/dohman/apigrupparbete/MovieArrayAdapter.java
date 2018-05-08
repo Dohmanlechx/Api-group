@@ -39,10 +39,14 @@ public class MovieArrayAdapter extends ArrayAdapter {
 
         View view = LayoutInflater.from(context).inflate(resource,parent,false);
 
-        TextView movieName = (TextView) view.findViewById(R.id.textView);
-        ImageView image = (ImageView) view.findViewById(R.id.imageView);
+        TextView movieName = (TextView) view.findViewById(R.id.title);
+        TextView movieRating = (TextView) view.findViewById(R.id.rating);
+        TextView movieYear = (TextView) view.findViewById(R.id.releaseYear);
+        ImageView image = (ImageView) view.findViewById(R.id.image);
 
         movieName.setText(details.getTitle());
+        movieYear.setText(details.getRelease_year());
+        movieRating.setText(Double.toString(details.getRating()));
 
         Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+ details.getImage()).into(image);
 

@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
 //Executing AsyncTask, passing api as parameter
-        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=a");
+        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=easy");
 
     }
 
@@ -131,9 +131,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 //Setting adapter to listview
                 listView.setAdapter(movieArrayAdapter);
             } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+               e.printStackTrace();
+            } }
+
+
+
     }
 
     @Override
