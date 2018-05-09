@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
 //Executing AsyncTask, passing api as parameter
-        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=easy");
+        new CheckConnectionStatus().execute("https://api.themoviedb.org/3/movie/popular?api_key=bc0d9d234a1124140f2ca26988c9ae27");
 
     }
 
@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             JSONObject jsonObject = null;
+
+            if(s!=null){
             try {
 
 //Parent JSON Object. Json object start at { and end at }
@@ -133,8 +135,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             } catch (JSONException e) {
                e.printStackTrace();
             } }
-
-
+        }
 
     }
 
