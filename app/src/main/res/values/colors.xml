@@ -10,4 +10,5 @@
     <color name="text_shadow">#7F000000</color>
     <color name="text_shadow_white">#FFFFFF</color>
     <color name="black">#000</color>
+    <color name="yellow">#FFCE00</color>
 </resources>
