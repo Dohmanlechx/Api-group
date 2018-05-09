@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         listView = (ListView) findViewById(R.id.list);
         listView.setOnItemClickListener(this);
 
-//Executing AsyncTask, passing api as parameter
+        //Executing AsyncTask, passing api as parameter
         new CheckConnectionStatus().execute("https://api.themoviedb.org/3/movie/popular?api_key=bc0d9d234a1124140f2ca26988c9ae27");
 
     }
@@ -74,20 +74,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         protected String doInBackground(String... params) {
             URL url = null;
             try {
-//As we are passing just one parameter to AsyncTask, so used param[0] to get value at 0th position that is URL
+                //As we are passing just one parameter to AsyncTask, so used param[0] to get value at 0th position that is URL
                 url = new URL(params[0]);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
             try {
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-//Getting inputstream from connection, that is response which we got from server
+                //Getting inputstream from connection, that is response which we got from server
                 InputStream inputStream = urlConnection.getInputStream();
-//Reading the response
+                //Reading the response
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String s = bufferedReader.readLine();
                 bufferedReader.close();
-//Returning the response message to onPostExecute method
+                //Returning the response message to onPostExecute method
                 return s;
             } catch (IOException e) {
                 Log.e("Error: ", e.getMessage(), e);
@@ -209,11 +209,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
                 }
-
             }
-
         }
-
-
     }
 }

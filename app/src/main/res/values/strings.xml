@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">APIGrupparbete</string>
+    <string name="app_name">Movie Searcher</string>
     <string name="genre">Genre:</string>
     <string name="runtime">Runtime:</string>
     <string name="plot">Plot:</string>
