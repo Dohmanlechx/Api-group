@@ -19,8 +19,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="?actionBarSize"
             android:scaleType="centerCrop"
-            android:src="@drawable/blank_image">
-        </ImageView>
+            android:src="@drawable/blank_image"></ImageView>
 
         <TextView
             android:id="@+id/textYear"
@@ -34,10 +33,10 @@
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1.5"
-            android:shadowDy="1.3"
-            android:shadowRadius="1.6"
+            android:shadowColor="@color/black"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
             android:text="2008"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -47,36 +46,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/imageMain"
-            android:layout_alignStart="@+id/imageMain"
             android:layout_alignLeft="@+id/imageMain"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="4dp"
+            android:layout_alignStart="@+id/imageMain"
             android:paddingBottom="8dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:shadowColor="@color/black"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
             android:text="Movie Title"
-            android:textSize="30dp"
-            android:textColor="@android:color/white"
-            android:shadowColor="#000000"
-            android:shadowDx="1.5"
-            android:shadowDy="1.3"
-            android:shadowRadius="1.6">
-        </TextView>
+            android:textColor="@color/light_font"
+            android:textSize="30dp"></TextView>
 
         <TextView
             android:id="@+id/textRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textTitle"
-            android:layout_toStartOf="@+id/imageRating"
+            android:layout_alignTop="@+id/textYear"
+            android:layout_toEndOf="@+id/textYear"
             android:clickable="false"
             android:paddingBottom="4dp"
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
-            android:shadowColor="#000000"
-            android:shadowDx="1.5"
-            android:shadowDy="1.3"
-            android:shadowRadius="1.6"
+            android:shadowColor="@color/black"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="1"
             android:text="rating"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -85,10 +83,10 @@
             android:id="@+id/imageRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageMain"
             android:layout_alignEnd="@+id/imageMain"
             android:layout_alignRight="@+id/imageMain"
-            android:layout_alignBottom="@+id/imageMain"
-            android:padding="8dp"/>
+            android:padding="8dp" />
 
     </RelativeLayout>
 
@@ -108,24 +106,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/genre"/>
+                android:text="@string/genre" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="32dp"
-                android:text="Drama"/>
+                android:text="Drama" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/runtime"/>
+                android:text="@string/runtime" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="128 min"/>
+                android:text="128 min" />
 
         </LinearLayout>
 
@@ -141,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Plot:"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/textPlot"
@@ -149,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textPlotTitle"
                 android:padding="8dp"
-                android:text="Cat ipsum dolor sit amet, chase mice. Lick master's hand at first then bite because im moody hide when guests come over, but small kitty warm kitty little balls of fur and reward the chosen human with a slow blink and eat owner's food put toy mouse in food bowl run out of litter box at full speed . Stares at human while pushing stuff off a table fooled again thinking the dog likes me. Prance along on top of the garden fence, annoy the neighbor's dog and make it bark cat is love, cat is life."/>
+                android:text="Cat ipsum dolor sit amet, chase mice. Lick master's hand at first then bite because im moody hide when guests come over, but small kitty warm kitty little balls of fur and reward the chosen human with a slow blink and eat owner's food put toy mouse in food bowl run out of litter box at full speed . Stares at human while pushing stuff off a table fooled again thinking the dog likes me. Prance along on top of the garden fence, annoy the neighbor's dog and make it bark cat is love, cat is life." />
 
         </RelativeLayout>
 
@@ -165,15 +163,15 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/countryOfOrigin"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/textCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:layout_below="@+id/textCountryTitle"
-                android:text="Far far away"/>
+                android:padding="8dp"
+                android:text="Far far away" />
 
         </RelativeLayout>
 
@@ -189,15 +187,15 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/spokenLanguage"
-                android:textSize="20dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/textLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
                 android:layout_below="@+id/textLanguageTitle"
-                android:text="Gibberish"/>
+                android:padding="8dp"
+                android:text="Gibberish" />
 
         </RelativeLayout>
 
@@ -207,8 +205,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
 
         <ImageButton
             android:id="@+id/menuButton"
