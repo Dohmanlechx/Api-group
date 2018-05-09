@@ -1,12 +1,12 @@
 package com.dohman.apigrupparbete;
 
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,12 +15,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.support.v7.widget.SearchView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +29,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Moving to MovieDetailsActivity from MainActivity. Sending the MovieDetails object from one activity to another activity
         Intent intent = new Intent(this, MovieDetailActivity.class);
-        intent.putExtra("MOVIE_DETAILS", (MovieDetails)parent.getItemAtPosition(position));
+        intent.putExtra("MOVIE_DETAILS", (MovieDetails) parent.getItemAtPosition(position));
         startActivity(intent);
 
     }
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         protected void onPreExecute() {
             super.onPreExecute();
         }
+
         //This method will run on background thread and after completion it will return result to onPostExecute
         @Override
         protected String doInBackground(String... params) {
@@ -94,59 +94,59 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
             return null;
         }
+
         //This method runs on UIThread and it will execute when doInBackground is completed
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             JSONObject jsonObject = null;
 
-            if(s!=null){
-            try {
+            if (s != null) {
+                try {
 
-//Parent JSON Object. Json object start at { and end at }
-                jsonObject = new JSONObject(s);
+                    //Parent JSON Object. Json object start at { and end at }
+                    jsonObject = new JSONObject(s);
 
-                movieList = new ArrayList<>();
+                    movieList = new ArrayList<>();
 
-//JSON Array of parent JSON object. Json array starts from [ and end at ]
-                JSONArray jsonArray = jsonObject.getJSONArray("results");
+                    //JSON Array of parent JSON object. Json array starts from [ and end at ]
+                    JSONArray jsonArray = jsonObject.getJSONArray("results");
 
-//Reading JSON object inside Json array
-                for (int i =0; i<jsonArray.length();i++)
-                {
+                    //Reading JSON object inside Json array
+                    for (int i = 0; i < jsonArray.length(); i++) {
 
-//Reading JSON object at 'i'th position of JSON Array
-                    JSONObject object = jsonArray.getJSONObject(i);
-                    MovieDetails movieDetails = new MovieDetails();
-                    movieDetails.setTitle(object.getString("original_title"));
-                    movieDetails.setRating(object.getDouble("vote_average"));
-                    movieDetails.setPlot(object.getString("overview"));
-                    movieDetails.setRelease_year(object.getString("release_date"));
-                    movieDetails.setImage(object.getString("poster_path"));
-                    movieList.add(movieDetails);
+                        //Reading JSON object at 'i'th position of JSON Array
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        MovieDetails movieDetails = new MovieDetails();
+                        movieDetails.setTitle(object.getString("original_title"));
+                        movieDetails.setRating(object.getDouble("vote_average"));
+                        movieDetails.setPlot(object.getString("overview"));
+                        movieDetails.setRelease_year(object.getString("release_date"));
+                        movieDetails.setImage(object.getString("poster_path"));
+                        movieList.add(movieDetails);
 
+                    }
+
+                    //Creating custom array adapter instance and setting context of MainActivity, List item layout file and movie list.
+                    movieArrayAdapter = new MovieArrayAdapter(MainActivity.this, R.layout.movie_list, movieList);
+
+                    //Setting adapter to listview
+                    listView.setAdapter(movieArrayAdapter);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-                //Creating custom array adapter instance and setting context of MainActivity, List item layout file and movie list.
-                movieArrayAdapter = new MovieArrayAdapter(MainActivity.this,R.layout.movie_list,movieList);
-
-                //Setting adapter to listview
-                listView.setAdapter(movieArrayAdapter);
-            } catch (JSONException e) {
-               e.printStackTrace();
-            } }
+            }
         }
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
-        final MenuItem myActionMenuItem=menu.findItem(R.id.action_search);
+        getMenuInflater().inflate(R.menu.menu, menu);
+        final MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
 
 
-
-        searchView=(SearchView) myActionMenuItem.getActionView();
+        searchView = (SearchView) myActionMenuItem.getActionView();
         changeSearchViewTextColor(searchView);
 
         ((EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setHintTextColor(getResources().getColor(R.color.white));
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onQueryTextSubmit(String s) {
 
-                if (!searchView.isIconified()){
+                if (!searchView.isIconified()) {
                     searchView.setIconified(true);
                 }
                 myActionMenuItem.collapseActionView();
@@ -163,8 +163,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                newText=newText.toLowerCase();
-                new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query="+newText);
+                newText = newText.toLowerCase();
+                new CheckConnectionStatus().execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=" + newText);
 
                 /*List<MovieDetails> filteredMoviesList=new ArrayList<>();
 
@@ -197,14 +197,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }*/
 
     //for changeing the text color of searchview
-    private void changeSearchViewTextColor(View view){
-        if(view!=null){
-            if(view instanceof TextView){
+    private void changeSearchViewTextColor(View view) {
+        if (view != null) {
+            if (view instanceof TextView) {
                 ((TextView) view).setTextColor(Color.WHITE);
                 return;
-            } else if(view instanceof ViewGroup){
-                ViewGroup viewGroup=(ViewGroup) view;
-                for(int i=0; i<viewGroup.getChildCount();i++){
+            } else if (view instanceof ViewGroup) {
+                ViewGroup viewGroup = (ViewGroup) view;
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
                     changeSearchViewTextColor(viewGroup.getChildAt(i));
 
 

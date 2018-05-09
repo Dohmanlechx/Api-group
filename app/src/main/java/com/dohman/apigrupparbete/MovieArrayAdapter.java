@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieArrayAdapter extends ArrayAdapter {
@@ -37,16 +36,16 @@ public class MovieArrayAdapter extends ArrayAdapter {
 
         MovieDetails details = movieDetailsList.get(position);
 
-        View view = LayoutInflater.from(context).inflate(resource,parent,false);
+        View view = LayoutInflater.from(context).inflate(resource, parent, false);
 
         TextView movieName = (TextView) view.findViewById(R.id.title);
         ImageView image = (ImageView) view.findViewById(R.id.image);
 
         movieName.setText(details.getTitle());
 
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/"+ details.getImage()).into(image);
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + details.getImage()).into(image);
 
-        return  view;
+        return view;
     }
 
     @Nullable

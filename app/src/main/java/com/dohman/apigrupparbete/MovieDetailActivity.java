@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide;
 public class MovieDetailActivity extends AppCompatActivity {
 
 
-
     private ImageView image;
 
     private TextView title, date, rating, overview;
@@ -20,26 +19,25 @@ public class MovieDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
 
-        image = (ImageView) findViewById(R.id.imageMain);
+        image = findViewById(R.id.imageMain);
 
-        title = (TextView) findViewById(R.id.textTitle);
+        title = findViewById(R.id.textTitle);
 
-        date = (TextView)findViewById(R.id.textYear);
+        date = findViewById(R.id.textYear);
 
-        rating = (TextView)findViewById(R.id.textRating);
+        rating = findViewById(R.id.textRating);
 
-        overview = (TextView) findViewById(R.id.textPlot);
+        overview = findViewById(R.id.textPlot);
 
         //Getting the value from bundle, means the value which we had during switching to this activity from main activity
         MovieDetails details = (MovieDetails) getIntent().getExtras().getSerializable("MOVIE_DETAILS");
 
-        if(details !=null)
-        {
+        if (details != null) {
             //Showing image from the movie db api into imageview using glide library
-            Glide.with(this).load("https://image.tmdb.org/t/p/w500/"+ details.getImage()).into(image);
+            Glide.with(this).load("https://image.tmdb.org/t/p/w500/" + details.getImage()).into(image);
             title.setText(details.getTitle());
             date.setText(details.getRelease_year());
             rating.setText(Double.toString(details.getRating()));
