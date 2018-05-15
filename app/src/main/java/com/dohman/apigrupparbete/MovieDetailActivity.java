@@ -32,6 +32,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         overview = findViewById(R.id.textPlot);
 
+
         //Getting the value from bundle, means the value which we had during switching to this activity from main activity
         MovieDetails details = (MovieDetails) getIntent().getExtras().getSerializable("MOVIE_DETAILS");
 
