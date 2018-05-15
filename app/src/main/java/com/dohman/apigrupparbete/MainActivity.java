@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final String DOWNLOADINGMESSAGE = "HÄMTAR FILMER ..." ;
     private GridView gridView;
     private SearchView searchView;
+    private Handler mHandler;
+
     ArrayList<MovieDetails> movieList;
     MovieBaseAdapter movieArrayAdapter;
 
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         gridView = (GridView) findViewById(R.id.gridview);
         gridView.setOnItemClickListener(this);
+
+        mHandler = new Handler();
 
         //Executing AsyncTask, passing api as parameter
         new CheckConnectionStatus(this).execute("https://api.themoviedb.org/3/movie/popular?api_key=bc0d9d234a1124140f2ca26988c9ae27");
@@ -65,20 +70,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //Moving to MovieDetailsActivity from MainActivity. Sending the MovieDetails object from one activity to another activity
         Intent intent = new Intent(this, MovieDetailActivity.class);
-        Bitmap bitmap = movieList.get(position).getMovieBitmap();
+        MovieDetails details = (MovieDetails) parent.getItemAtPosition(position);
+        intent.putExtra("MOVIE_DETAILS", details);
 
-        /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        */
-        intent.putExtra("movie", movieList.get(position).getImageString());
-        intent.putExtra("title", movieList.get(position).getTitle());
-        intent.putExtra("date", movieList.get(position).getRelease_year());
-        intent.putExtra("rating", movieList.get(position).getRating());
-        intent.putExtra("overview", movieList.get(position).getPlot());
-
-        //intent.putExtra("movieBitmap", byteArray);
-        //intent.putExtra("MOVIE_DETAILS", (MovieDetails) parent.getItemAtPosition(position));
         startActivity(intent);
 
     }
@@ -144,27 +138,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             movieDetails.setRating(object.getDouble("vote_average"));
                             movieDetails.setPlot(object.getString("overview"));
                             movieDetails.setRelease_year(object.getString("release_date"));
-                            movieDetails.setImageString(object.getString("poster_path"));
-                            movieDetails.setImagePath("https://image.tmdb.org/t/p/w500/" + movieDetails.getImageString());
-
-                            try {
-                                URL imgUrl = new URL(movieDetails.getImageUrl());
-                                HttpURLConnection httpURLConnection = (HttpURLConnection) imgUrl.openConnection();
-                                httpURLConnection.connect();
-                                InputStream in = httpURLConnection.getInputStream();
-                                Bitmap movieBitmap = BitmapFactory.decodeStream(in);
-                                //Bitmap.createScaledBitmap ( movieBitmap, 50, 50, true);
-                                movieDetails.setMovieBitmap(movieBitmap);
-                                int y = 1;
-                            } catch (MalformedURLException me) {
-                                me.printStackTrace();
-                            } catch (IOException ioe) {
-                                ioe.printStackTrace();
-                            }
-
+                            movieDetails.setImage(object.getString("poster_path"));
+                            //movieDetails.setImagePath("https://image.tmdb.org/t/p/w500/" + movieDetails.getImageString());
 
                             movieList.add(movieDetails);
-
                         }
 
                     } catch (JSONException e) {
@@ -247,17 +224,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onQueryTextChange(String newText) {
                 newText = newText.toLowerCase();
-                new CheckConnectionStatus(MainActivity.this).execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=" + newText);
+                final String new_text = newText;
+                //mQueryString = searchTerm;
+                mHandler.removeCallbacksAndMessages(null);
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //Put your call to the server here (with mQueryString)
+                        new CheckConnectionStatus(MainActivity.this).execute("https://api.themoviedb.org/3/search/movie?api_key=bc0d9d234a1124140f2ca26988c9ae27&query=" + new_text);
 
-                /*List<MovieDetails> filteredMoviesList=new ArrayList<>();
+                    }
+                }, 600);
 
-                for (MovieDetails model:movieList){
-                     String text=model.getTitle().toLowerCase();
-                     if(text.contains(newText)){
-                         filteredMoviesList.add(model);
-                     }
-                 }
-                 movieArrayAdapter.setfilter(filteredMoviesList);*/
+
 
 
                 return true;
@@ -267,17 +246,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return true;
     }
 
-    /*private List<MovieDetails> filter(List<MovieDetails> pl, String query){
-        query=query.toLowerCase();
-        final List<MovieDetails> filteredMoviesList=new ArrayList<>();
-        for (MovieDetails model:pl){
-            final String text=model.getTitle().toLowerCase();
-            if(text.startsWith(text)){
-                filteredMoviesList.add(model);
-            }
-        }
-        return filteredMoviesList;
-    }*/
 
     //for changeing the text color of searchview
     private void changeSearchViewTextColor(View view) {
