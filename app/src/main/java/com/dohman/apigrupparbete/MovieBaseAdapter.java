@@ -75,9 +75,8 @@ public class MovieBaseAdapter extends BaseAdapter {
 
         MovieDetails details = movieDetailsList.get(position);
 
-        //Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + details.getImageString()).into(holder.image);
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + details.getImage()).into(holder.image);
         holder.movieName.setText(details.getTitle());
-        holder.image.setImageBitmap(details.getMovieBitmap());
 
         return convertView;
     }

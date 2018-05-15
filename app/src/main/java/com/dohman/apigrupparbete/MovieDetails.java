@@ -1,51 +1,35 @@
 package com.dohman.apigrupparbete;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
 
 /**
  * Created by anandsingh on 28/12/16.
  */
 
-public class MovieDetails {
+public class MovieDetails  implements Serializable{
 
     String title;
     String release_year;
     String plot;
     String language;
-    String imageString;
+    String image;
     String genre;
     String country;
     String runtime;
     String producer;
-    String imageUrl;
     double rating;
 
-    public Bitmap getMovieBitmap() {
-        return movieBitmap;
-    }
-
-    public void setMovieBitmap(Bitmap movieBitmap) {
-        this.movieBitmap = movieBitmap;
-    }
-
-    Bitmap movieBitmap;
-
-
-    public MovieDetails(String title, String release_year, String plot, String language, String imageString, String genre, String country, String runtime, String producer, double rating, String imageUrl) {
+    public MovieDetails(String title, String release_year, String plot, String language, String image, String genre, String country, String runtime, String producer, double rating) {
         this.title = title;
         this.release_year = release_year;
         this.plot = plot;
         this.language = language;
-        this.imageString = imageString;
+        this.image = image;
         this.genre = genre;
         this.country = country;
         this.runtime = runtime;
         this.producer = producer;
         this.rating = rating;
-        this.imageUrl = imageUrl;
-        //this.movieBitmap = movieBitmap;
     }
 
     public MovieDetails() {
@@ -83,22 +67,12 @@ public class MovieDetails {
         this.language = language;
     }
 
-    public String getImageString() {
-        return imageString;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageString(String imageString) {
-        this.imageString = imageString;
-    }
-
-    public void setImagePath(String imageUrl) {
-
-        this.imageUrl = imageUrl;
-    }
-
-    public String getImageUrl() {
-
-        return this.imageUrl;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getGenre() {
