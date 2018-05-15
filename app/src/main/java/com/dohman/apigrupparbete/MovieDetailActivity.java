@@ -1,8 +1,8 @@
 package com.dohman.apigrupparbete;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,9 +32,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         overview = findViewById(R.id.textPlot);
 
-
-        //Getting the value from bundle, means the value which we had during switching to this activity from main activity
         MovieDetails details = (MovieDetails) getIntent().getExtras().getSerializable("MOVIE_DETAILS");
+
 
         if (details != null) {
             //Showing image from the movie db api into imageview using glide library
