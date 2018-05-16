@@ -189,7 +189,8 @@
                     android:padding="8dp"
                     android:text="@string/countryOfOrigin"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/textCountry"
@@ -197,7 +198,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textCountryTitle"
                     android:padding="8dp"
-                    android:text="Far far away" />
+                    android:text="Far far away"
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
