@@ -13,7 +13,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private ImageView image;
 
-    private TextView title, date, rating, overview;
+    private TextView title, date, rating, overview, language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         overview = findViewById(R.id.textPlot);
 
+        language=findViewById(R.id.textLanguage);
+
         MovieDetails details = (MovieDetails) getIntent().getExtras().getSerializable("MOVIE_DETAILS");
 
 
@@ -42,6 +44,15 @@ public class MovieDetailActivity extends AppCompatActivity {
             date.setText(details.getRelease_year());
             rating.setText(Double.toString(details.getRating()));
             overview.setText(details.getPlot());
+            if(details.getLanguage().equals("en")){
+            language.setText("English");
+            } else if (details.getLanguage().equals("zh")){
+                language.setText("Chinese");
+            } else if (details.getLanguage().equals("ja")){
+                language.setText("Japanese");
+            } else {
+                language.setText(details.getLanguage());
+            }
         }
     }
 }

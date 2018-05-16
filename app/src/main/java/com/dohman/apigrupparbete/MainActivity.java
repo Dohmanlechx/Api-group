@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             movieDetails.setPlot(object.getString("overview"));
                             movieDetails.setRelease_year(object.getString("release_date"));
                             movieDetails.setImage(object.getString("poster_path"));
+                            movieDetails.setLanguage(object.getString("original_language"));
                             //movieDetails.setImagePath("https://image.tmdb.org/t/p/w500/" + movieDetails.getImageString());
 
                             movieList.add(movieDetails);
