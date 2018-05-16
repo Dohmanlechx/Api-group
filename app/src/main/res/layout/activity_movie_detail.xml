@@ -129,25 +129,29 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/genre"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="32dp"
-                    android:text="Drama" />
+                    android:text="Drama"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/runtime"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="128 min" />
+                    android:text="128 min"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
